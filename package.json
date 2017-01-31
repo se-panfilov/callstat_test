@@ -2,17 +2,27 @@
   "private": true,
   "name": "callstats_test",
   "version": "1.0.0",
-  "author": "Sergey Panfilov <se-panfilov@ya.ru>",,
+  "author": "Sergey Panfilov <se-panfilov@ya.ru>",
   "repository": "git@github.com:se-panfilov/callstats_test.git",
   "main": "lib/index.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha --compilers js:babel-core/register --recursive",
+    "build": "babel src -d lib",
+    "test": "NODE_ENV=test mocha --compilers js:babel-register --recursive",
     "lint": "eslint src"
   },
-
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-  }
+    "babel-cli": "^6.22.2",
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
+    "babel-preset-latest": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-sourcemaps": "^2.4.0",
+    "mocha": "^3.2.0"
+  },
   "license": "MIT"
 }
