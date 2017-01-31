@@ -58,7 +58,6 @@ Output: after each iteration
 #####Hint:
 If you have a version, which works, try to improve it by focusing the time complexity.
 
-
 Attached within are additional test vectors:
 - Sliding window size for Test 2 is 100
 - Sliding window size for Test 3 is 1000
