@@ -7,7 +7,7 @@ gulp.task("default", function () {
   return gulp.src("src/**/*.js")
     .pipe(sourcemaps.init())
     .pipe(babel())
-    .pipe(concat("all.js"))
+    .pipe(concat("lib.js"))
     .pipe(sourcemaps.write("."))
     .pipe(gulp.dest("dist"))
 })
