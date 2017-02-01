@@ -8,7 +8,7 @@ function repl () {
   }
 
   const input = process.argv[2]
-  const output = './output'
+  const output = `${process.cwd()}/output/output.txt`
 
   files.readFile(input, (err, contents) => {
     if (err) throw 'REPL: can\'t read file'
