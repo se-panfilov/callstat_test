@@ -1,5 +1,23 @@
 # callstat_test
 
+
+# Getting started
+
+Install dependencies with
+
+```
+npm install
+```
+
+# Testing
+
+To run tests
+
+```
+npm test
+```
+
+
 ### test description
 
 ###Problem Set 1:

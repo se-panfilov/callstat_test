@@ -11,7 +11,7 @@ function getValue (isEven, arr, index) {
 }
 
 function isInteger (num) {
-  if (!num) throw 'isInteger: value undefined'
+  if (!num) throw new Error('isInteger: value undefined')
   return num.toString().indexOf('.') === -1
 }
 
@@ -21,7 +21,6 @@ module.exports = function getMedian (arr) {
   if (arr.length === 0) throw new Error('getMedian: array is empty')
   if (arr.length > 3) throw new Error('getMedian: array can\'t contain more than 3 items')
 
-  // TODO (S.Panfilov) this check gonna be in repl instead of median
   if (arr.length === 1) return -1
 
   const sortedArr = arr.sort((a, b) => a - b)

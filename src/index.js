@@ -11,19 +11,11 @@ function repl () {
   const output = `${process.cwd()}/output/output.txt`
 
   files.readFile(input, (err, contents) => {
-    if (err) throw 'REPL: can\'t read file'
+    if (err) throw err
+
     const arr = makeMedianArr(contents)
-    files.writeFile(output, arr, () => onWriteDone(output))
+    files.writeFile(output, arr, () => console.log(`Done: ${output}`))
   })
-
-}
-
-// function onReady (err, contents) {
-//   core()
-// }
-
-function onWriteDone (path) {
-  console.log(`Done: ${path}`)
 }
 
 module.exports = repl()
