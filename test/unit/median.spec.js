@@ -3,14 +3,6 @@ import getMedian from '../../src/median'
 
 describe('Median:', () => {
 
-
-  // beforeEach(() => {
-  // })
-  //
-  // afterEach(() => {
-  // })
-
-
   it('should return -1', () => {
     const sliding = [100]
 

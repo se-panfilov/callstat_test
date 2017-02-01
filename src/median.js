@@ -1,17 +1,3 @@
-// export default function getMedian (arr) {
-//   if (!arr.length) {
-//     return 0
-//   }
-//
-//   if (arr.length === 1) return -1
-//
-//   const numbers = arr.slice(0).sort((a, b) => a - b)
-//   const middle = Math.floor(numbers.length / 2)
-//   const isEven = numbers.length % 2 === 0
-//
-//   return isEven ? (numbers[middle] + numbers[middle - 1]) / 2 : numbers[middle]
-// }
-
 function getForEven (arr, index) {
   return (arr[index] + arr[index - 1]) / 2
 }
@@ -35,6 +21,7 @@ export default function getMedian (arr) {
   if (arr.length === 0) throw new Error('getMedian: array is empty')
   if (arr.length > 3) throw new Error('getMedian: array can\'t contain more than 3 items')
 
+  // TODO (S.Panfilov) this check gonna be in repl instead of median
   if (arr.length === 1) return -1
 
   const sortedArr = arr.sort((a, b) => a - b)
