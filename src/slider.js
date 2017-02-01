@@ -1,18 +1,28 @@
-export default function getSlides (arr, size = 3) {
-  if (!arr || arr.length === 0) return []
-
-  const resArr = []
-
+function getSlideBody (arr, size) {
+  const result = []
   arr.forEach((v, i) => {
     let from = i
     let to = from + size
-    resArr.push(arr.slice(from, to))
+    result.push(arr.slice(from, to))
   })
 
-  if (arr.length > 2) resArr.unshift(arr.slice(0, 2))
-  if (arr.length > 1) resArr.unshift(arr.slice(0, 1))
+  return result
+}
 
-  console.info(resArr)
-  return resArr
+function getSlideTail (arr, size) {
+  const result = []
+  for (let i = size; i > 1; i--) {
+    if (arr.length > i - 1) result.unshift(arr.slice(0, i - 1))
+  }
 
+  return result
+}
+
+export default function getSlides (arr, size = 3) {
+  if (!arr || arr.length === 0) return []
+
+  const bodyArr = getSlideBody(arr, size)
+  const tailArr = getSlideTail(arr, size)
+
+  return tailArr.concat(bodyArr)
 }

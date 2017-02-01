@@ -38,7 +38,7 @@ describe('Slider:', () => {
     const result1 = getSlides(arr1)
     const result2 = getSlides(arr2)
 
-    expect(result1).to.have.length(expectedArr1.length)// TODO (S.Panfilov) revert
+    expect(result1).to.have.length(expectedArr1.length)
     expect(result1[0]).to.deep.equal(expectedArr1[0])
 
     expect(result2).to.have.length(expectedArr2.length)
