@@ -12,6 +12,6 @@ module.exports = function makeMedianArr (content) {
   return result
 }
 
-function makeArr (string) {
-  return (string.split('\n\n')).map(v => +v)
+function makeArr (string, pattern = '\r\r\n') {
+  return (string.split(pattern)).map(v => +v)
 }

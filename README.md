@@ -3,17 +3,34 @@
 
 # Getting started
 
-Install dependencies with
+## Requirements
 
-```
+1. [Node.js][1] (Better if it would be [version 7.2.x][2])
+2. Npm or [yarn][3] (I use yarn, but npm is also good)
+
+Better to launch it on linux or mac os.
+
+##Install dependencies with
+
+```bash
 npm install
 ```
 
-# Testing
+# Usage
+
+example (from root):
+
+```bash
+node ./lib/index.js ./test_files/Round\ 1.\ Software\ engineering\ test\ cases\ -\ test2.csv
+node ./lib/index.js ./test_files/Round\ 1.\ Software\ engineering\ test\ cases\ -\ test3.csv
+node ./lib/index.js ./test_files/Round\ 1.\ Software\ engineering\ test\ cases\ -\ test4.csv
+```
+
+## Testing
 
 To run tests
 
-```
+```bash
 npm test
 ```
 
@@ -88,3 +105,6 @@ The output file your program generates should have on each line the median of th
 
 What is the time-complexity of your solution? If you had more time, how would you improve it?
 
+[1]: https://nodejs.org/en/
+[2]: https://nodejs.org/dist/v7.2.1/node-v7.2.1.pkg
+[3]: https://yarnpkg.com/

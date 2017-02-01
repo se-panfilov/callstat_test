@@ -1,7 +1,7 @@
 const files = require('./files')
 const makeMedianArr = require('./core')
 
-function repl () {
+function main () {
   if (process.argv.length < 3) {
     console.log('Usage: node ' + process.argv[1] + ' FILENAME')
     process.exit(1)
@@ -18,4 +18,4 @@ function repl () {
   })
 }
 
-module.exports = repl()
+module.exports = main()
