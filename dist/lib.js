@@ -1,9 +1,42 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = getMedian;
+var getSlides = require('./slider');
+var getMedian = require('./median');
+
+module.exports = function makeMedianArr(content) {
+  var slideSize = 3;
+  var arr = makeArr(content);
+  var slides = getSlides(arr, slideSize);
+  var result = [];
+
+  slides.forEach(function (v) {
+    return result.push(getMedian(v));
+  });
+
+  return result;
+};
+
+function makeArr(string) {
+  return string.split('\n\n').map(function (v) {
+    return +v;
+  });
+}
+'use strict';
+
+var fs = require('fs');
+
+module.exports = {
+  readFile: function readFile(path, cb) {
+    var encoding = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'utf8';
+
+    return fs.readFile(path, encoding, cb);
+  },
+  writeFile: function writeFile(path, data, cb) {
+    // TODO (S.Panfilov) implement
+  }
+};
+'use strict';
+
 function getForEven(arr, index) {
   return (arr[index] + arr[index - 1]) / 2;
 }
@@ -21,7 +54,7 @@ function isInteger(num) {
   return num.toString().indexOf('.') === -1;
 }
 
-function getMedian(arr) {
+module.exports = function getMedian(arr) {
   if (!Array.isArray(arr)) throw new Error('getMedian: argument must be an array');
   if (!arr.every(function (v) {
     return Number.isFinite(v) && isInteger(v);
@@ -39,44 +72,42 @@ function getMedian(arr) {
   var middle = Math.floor(arr.length / 2);
 
   return getValue(isEven, sortedArr, middle);
-}
+};
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = repl;
+var files = require('./files');
+var makeMedianArr = require('./core');
 
-var _slider = require('./slider');
+module.exports = function repl() {
+  if (process.argv.length < 3) {
+    console.log('Usage: node ' + process.argv[1] + ' FILENAME');
+    process.exit(1);
+  }
 
-var _slider2 = _interopRequireDefault(_slider);
+  var input = process.argv[2];
+  var output = './output';
 
-var _median = require('./median');
-
-var _median2 = _interopRequireDefault(_median);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function repl(arr) {
-
-  var slideSize = 3;
-  var slides = (0, _slider2.default)(arr, slideSize);
-
-  var result = [];
-  slides.forEach(function (v) {
-    return result.push((0, _median2.default)(v));
+  files.readFile(input, function (err, contents) {
+    // if (err) throw 'REPL: can\'t read file'
+    if (err) throw err;
+    var arr = makeMedianArr(contents);
+    files.writeFile(output, arr, function () {
+      return onWriteDone(output);
+    });
   });
+};
 
-  console.info(result);
+// function onReady (err, contents) {
+//   core()
+// }
 
-  return result;
+function onWriteDone(path) {
+  console.log('Done: ' + path);
 }
+
+// module.exports = repl
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = getSlides;
 function getSlideBody(arr, size) {
   var result = [];
   arr.forEach(function (v, i) {
@@ -97,7 +128,7 @@ function getSlideTail(arr, size) {
   return result;
 }
 
-function getSlides(arr) {
+module.exports = function getSlides(arr) {
   var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3;
 
   if (!arr || arr.length === 0) return [];
@@ -106,5 +137,5 @@ function getSlides(arr) {
   var tailArr = getSlideTail(arr, size);
 
   return tailArr.concat(bodyArr);
-}
+};
 //# sourceMappingURL=lib.js.map

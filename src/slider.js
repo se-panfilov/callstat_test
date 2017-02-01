@@ -18,7 +18,7 @@ function getSlideTail (arr, size) {
   return result
 }
 
-export default function getSlides (arr, size = 3) {
+module.exports = function getSlides (arr, size = 3) {
   if (!arr || arr.length === 0) return []
 
   const bodyArr = getSlideBody(arr, size)

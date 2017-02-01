@@ -15,7 +15,7 @@ function isInteger (num) {
   return num.toString().indexOf('.') === -1
 }
 
-export default function getMedian (arr) {
+module.exports = function getMedian (arr) {
   if (!Array.isArray(arr)) throw new Error('getMedian: argument must be an array')
   if (!arr.every(v => Number.isFinite(v) && isInteger(v))) throw new Error('getMedian: array may contain integer numbers only')
   if (arr.length === 0) throw new Error('getMedian: array is empty')
